@@ -25,11 +25,18 @@
     display: grid;
     grid-template-columns: minmax(auto, 600px) 380px;
     gap: var(--spacing-2xl);
-    align-items: start;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .hero-text {
     padding-right: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .date {
@@ -54,7 +61,23 @@
 
 .hero-actions {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: var(--spacing-md);
+    width: 100%;
+}
+
+.action-group {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-hint {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
 }
 
 /* Hero Widgets */

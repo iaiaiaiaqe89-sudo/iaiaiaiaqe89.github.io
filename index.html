@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="/css/quick-links.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/mobile.css">
 </head>
 <body>
+    <div class="modal-overlay"></div>
     <header class="header">
         <div class="container">
             <div class="header-top">
@@ -37,6 +39,9 @@
                         <small data-i18n="header.subtitle">Официальный сайт</small>
                     </div>
                 </a>
+                <button class="mobile-menu-toggle">
+                    <span class="menu-icon"></span>
+                </button>
                 <nav class="main-nav">
                     <a href="/" class="active" data-i18n="nav.home">Главная</a>
                     <a href="/news.html" data-i18n="nav.news">Новости</a>
@@ -442,6 +447,8 @@
             menuBtn.textContent = isExpanded ? '☰' : '✕';
         });
 
+    <script src="/js/mobile.js"></script>
+    <script>
         // Weather data (demo)
         function updateWeather() {
             const weatherUpdate = document.getElementById('weather-update');
@@ -449,6 +456,13 @@
             weatherUpdate.textContent = `Обновлено ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
         }
         updateWeather();
+    </script>
+    <script src="/js/mobile.js"></script>
+</body>
+</html>
+    </script>
+</body>
+</html>
         setInterval(updateWeather, 30 * 60 * 1000);
     </script>
 </body>

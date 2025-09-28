@@ -86,6 +86,10 @@
     font-weight: 500;
     padding: 8px 0;
     position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-nav a.active::after {

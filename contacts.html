@@ -8,8 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
+    <div class="modal-overlay"></div>
     <header class="header">
         <div class="container">
             <div class="header-top">
@@ -30,6 +32,9 @@
                         <small data-i18n="header.subtitle">Официальный сайт</small>
                     </div>
                 </a>
+                <button class="mobile-menu-toggle" aria-label="Открыть меню">
+                    <span class="menu-icon"></span>
+                </button>
                 <nav class="main-nav">
                     <a href="/" data-i18n="nav.home">Главная</a>
                           <a href="/news.html" data-i18n="nav.news">Новости</a>
@@ -208,6 +213,12 @@
                 // Для демонстрации просто показываем уведомление
                 alert(getTranslation('contacts.feedback.success'));
                 e.target.reset();
+            });
+        });
+    </script>
+    <script src="/js/mobile.js"></script>
+</body>
+</html>
             });
         });
     </script>
