@@ -1,10 +1,29 @@
 /* Base Mobile Styles */
-html, body {
-    overflow-x: hidden;
+html {
     width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+main {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
 }
 
 * {
@@ -18,23 +37,99 @@ img {
     height: auto;
 }
 
-/* Prevent horizontal scroll on iOS */
+/* Reset container styles for mobile */
 .container {
-    padding-left: max(15px, env(safe-area-inset-left));
-    padding-right: max(15px, env(safe-area-inset-right));
     width: 100%;
-    overflow-x: hidden;
+    max-width: 100%;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Mobile-specific container adjustments */
+@media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+        width: calc(100% - (var(--spacing-md) * 2));
+        left: 0;
+        right: 0;
+        position: relative;
+    }
+
+    /* Центрирование содержимого */
+    .hero-content,
+    .section-content,
+    .news-section,
+    .footer-content {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    /* Фиксированное позиционирование для кнопки меню */
+    .header-main {
+        position: relative;
+    }
+
+    .mobile-menu-toggle {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Исправление наложения карточек */
+    .quick-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .quick-link-card {
+        margin: 0;
+        width: 100%;
+    }
 }
 
 /* Mobile Menu Styles */
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    position: relative;
-    z-index: 1001;
+@media (max-width: 768px) {
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: white;
+    }
+
+    .main {
+        margin-top: calc(var(--header-height) + 20px);
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        background: none;
+        border: none;
+        padding: var(--spacing-sm);
+        cursor: pointer;
+        position: absolute;
+        right: var(--spacing-md);
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1001;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .menu-icon {
@@ -130,12 +225,25 @@ img {
     .hero {
         min-height: auto;
         padding: var(--spacing-xl) 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
-        padding: 0 var(--spacing-md);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .hero-text {
@@ -173,6 +281,32 @@ img {
         text-align: center;
         justify-content: center;
         display: flex;
+    }
+
+    /* Исправление отображения информационных карточек */
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .info-card {
+        width: 100%;
+        margin: 0;
+    }
+
+    .card {
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Улучшение отображения списков и карточек */
+    .list-grid,
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0;
+        margin: var(--spacing-md) 0;
     }
 
     .hero h1 {
@@ -249,10 +383,22 @@ img {
 
 /* Footer Mobile Styles */
 @media (max-width: 768px) {
+    .footer {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .footer .container {
+        width: 100%;
+        box-sizing: border-box;
+        padding: var(--spacing-md);
+    }
+
     .footer-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
         text-align: center;
+        width: 100%;
     }
 
     .footer-column {
