@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="admin.pageTitle">Административная панель | Мэрия города Бишкек</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+    <!-- Admin styles moved to /css/admin.css for maintainability; inline styles removed -->
+
+    <div class="admin-app">
+        <aside class="admin-sidebar">
+            <div class="admin-brand">
+                <img src="/images/gerb.png" alt="Логотип">
+                <div>
+                    <div style="font-weight:700">Мэрия — Панель</div>
+                    <small style="color:var(--light-gray)">Управление контентом</small>
+                </div>
+            </div>
+            <nav class="admin-nav">
+                <a href="#create" class="active">Создать новость</a>
+                <a href="#list">Список новостей</a>
+                <a href="#documents">Документы</a>
+                <a href="#media">Медиа-библиотека</a>
+                <a href="#settings">Настройки</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Административная панель</h1>
+                <div>
+                    <a href="/" class="btn btn-secondary">Перейти на сайт</a>
+                </div>
+            </div>
+            <div id="out" aria-live="polite" style="min-height:20px;margin-bottom:8px;color:var(--error);"></div>
+
+            <section id="create" class="admin-section">
+                <div class="admin-cards">
+                    <div class="admin-card">
+                        <h3>Создать / Редактировать новость</h3>
+                        <form id="news-form" class="admin-form">
+                            <div class="row">
+                                <label>Дата публикации<input type="date" name="date" id="date"></label>
+                                <label>Время публикации<input type="time" name="time" id="time" step="60"></label>
+                                <label>Изображение<input type="url" name="image" id="image" placeholder="https://"></label>
+                            </div>
+                            <label>Заголовок (RU)<input type="text" name="title_ru"></label>
+                            <label>Краткое описание (RU)<textarea name="short_ru" rows="2"></textarea></label>
+                            <label>Полный текст (RU)<textarea name="content_ru" rows="5"></textarea></label>
+                            <label>Заголовок (KG)<input type="text" name="title_ky"></label>
+                            <label>Краткое описание (KG)<textarea name="short_ky" rows="2"></textarea></label>
+                            <label>Полный текст (KG)<textarea name="content_ky" rows="5"></textarea></label>
+                                <div class="admin-actions">
+                                <button id="submit-btn" type="submit" class="btn btn-primary">Сохранить</button>
+                                <button type="reset" class="btn btn-secondary">Очистить</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="admin-card">
+                        <h3>Быстрые действия</h3>
+                        <p>Импорт/экспорт новостей, обновление кэша, просмотр логов.</p>
+                        <div style="display:flex;gap:8px;margin-top:12px">
+                            <button class="btn">Импорт</button>
+                            <button class="btn">Экспорт</button>
+                            <button class="btn">Очистить кэш</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="list" style="margin-top:18px">
+                <h2>Список новостей</h2>
+                <div id="news-list" class="news-list" style="margin-top:12px"></div>
+            </section>
+
+            <section id="documents" style="margin-top:18px">
+                <h2>Управление документами</h2>
+                <div class="admin-cards" style="margin-top:12px">
+                    <div class="admin-card" style="flex:1">
+                        <h3>Создать документ</h3>
+                        <form id="document-form" class="admin-form">
+                            <div class="row">
+                                <label>Номер документа<input type="text" name="number" placeholder="D-2025-001"></label>
+                                <label>Дата<input type="date" name="date"></label>
+                            </div>
+                            <label>Заголовок (RU)<input type="text" name="title_ru"></label>
+                            <div class="row">
+                                <label>Тип
+                                    <select name="type">
+                                        <option value="resolution">Постановление</option>
+                                        <option value="order">Распоряжение</option>
+                                        <option value="report">Отчёт</option>
+                                        <option value="info">Информация</option>
+                                        <option value="other">Другое</option>
+                                    </select>
+                                </label>
+                                <label>Отдел
+                                    <select name="department">
+                                        <option value="mayor">Мэр города</option>
+                                        <option value="cityCouncil">Городской кенеш</option>
+                                        <option value="finance">Финансы</option>
+                                        <option value="construction">Строительство</option>
+                                        <option value="transport">Транспорт</option>
+                                        <option value="legal">Юридический отдел</option>
+                                        <option value="other">Другие</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <label>Ссылка на файл (URL)<input type="url" name="fileUrl" placeholder="https://"></label>
+                            <label>Ссылка для просмотра (URL)<input type="url" name="viewUrl" placeholder="https://"></label>
+                            <div class="admin-actions">
+                                <button id="document-submit" type="submit" class="btn btn-primary">Добавить документ</button>
+                                <button type="reset" class="btn btn-secondary">Очистить</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="admin-card" style="flex:1">
+                        <h3>Список документов</h3>
+                        <div id="documents-list" class="news-list" style="margin-top:8px"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/admin.js"></script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>О мэрии</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about.html" class="footer-link">О нас</a></li>
+                        <li><a href="/structure.html" class="footer-link">Структура</a></li>
+                        <li><a href="/leadership.html" class="footer-link">Руководство</a></li>
+                        <li><a href="/vacancy.html" class="footer-link">Вакансии</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul class="footer-links">
+                        <li><a href="/news.html" class="footer-link">Новости</a></li>
+                        <li><a href="/documents.html" class="footer-link">Документы</a></li>
+                        <li><a href="/projects.html" class="footer-link">Проекты</a></li>
+                        <li><a href="/faq.html" class="footer-link">Часто задаваемые вопросы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+996312612827" class="footer-link">+996 (312) 61-28-27</a></li>
+                        <li><a href="mailto:info@bishkek.gov.kg" class="footer-link">Связаться по e-mail</a></li>
+                        <li><a href="/contacts.html" class="footer-link">г. Бишкек, пр. Чуй, 166</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Мэрия города Бишкек. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

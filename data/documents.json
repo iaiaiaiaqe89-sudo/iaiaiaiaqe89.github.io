@@ -1,0 +1,146 @@
+[
+  {
+    "id": "D-2025-001",
+    "number": "D-2025-001",
+    "date": "2025-09-10",
+    "title": {
+      "ru": "Постановление: О разработке ремонтных работ в центральном районе"
+    },
+    "type": "resolution",
+    "department": "construction",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/32204",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/32204"
+  },
+  {
+    "id": "D-2025-002",
+    "number": "D-2025-002",
+    "date": "2025-09-05",
+    "title": {
+      "ru": "Распоряжение: О выделении средств для социальных программ"
+    },
+    "type": "order",
+    "department": "social",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/32202",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/32202"
+  },
+  {
+    "id": "D-2025-003",
+    "number": "D-2025-003",
+    "date": "2025-08-21",
+    "title": {
+      "ru": "Отчёт: Мероприятие IMPULSE — итоги"
+    },
+    "type": "report",
+    "department": "culture",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/32199",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/32199"
+  },
+  {
+    "id": "D-2025-004",
+    "number": "D-2025-004",
+    "date": "2025-07-30",
+    "title": {
+      "ru": "Постановление: Меры по обеспечению безопасности дорожного движения"
+    },
+    "type": "resolution",
+    "department": "transport",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/32197",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/32197"
+  },
+  {
+    "id": "D-2025-005",
+    "number": "D-2025-005",
+    "date": "2025-06-14",
+    "title": {
+      "ru": "Распоряжение: Электрификация городского транспорта — проект"
+    },
+    "type": "order",
+    "department": "transport",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/31520",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/31520"
+  },
+  {
+    "id": "D-2024-001",
+    "number": "D-2024-001",
+    "date": "2024-12-15",
+    "title": {
+      "ru": "Реестр подрядчиков и требования к участникам"
+    },
+    "type": "order",
+    "department": "legal",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/31477",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/31477"
+  },
+  {
+    "id": "D-2024-002",
+    "number": "D-2024-002",
+    "date": "2024-09-10",
+    "title": {
+      "ru": "Отчёт по мониторингу городской среды"
+    },
+    "type": "report",
+    "department": "city",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/30882",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/30882"
+  },
+  {
+    "id": "D-2024-003",
+    "number": "D-2024-003",
+    "date": "2024-05-20",
+    "title": {
+      "ru": "Информация: Земельная реформа — материалы"
+    },
+    "type": "info",
+    "department": "legal",
+    "fileUrl": "http://www.meria.kg/ru/post/19483",
+    "viewUrl": "http://www.meria.kg/ru/post/19483"
+  },
+  {
+    "id": "D-2023-001",
+    "number": "D-2023-001",
+    "date": "2023-11-05",
+    "title": {
+      "ru": "Реестр мобильных групп по выдаче техпаспортов"
+    },
+    "type": "order",
+    "department": "transport",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/23317",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/23317"
+  },
+  {
+    "id": "D-2023-002",
+    "number": "D-2023-002",
+    "date": "2023-08-18",
+    "title": {
+      "ru": "Информация: Ход работ по ремонту"
+    },
+    "type": "info",
+    "department": "construction",
+    "fileUrl": "https://bishkek.gov.kg/ru/post/17923",
+    "viewUrl": "https://bishkek.gov.kg/ru/post/17923"
+  },
+  {
+    "number": "D-2025-999",
+    "date": "2025-09-28",
+    "title": {
+      "ru": "Документ добавленный тестом"
+    },
+    "type": "other",
+    "department": "mayor",
+    "fileUrl": "",
+    "viewUrl": "",
+    "id": "1759018740331"
+  },
+  {
+    "number": "D-2025-TEST-ADMIN",
+    "date": "2025-09-28",
+    "title": {
+      "ru": "Добавлен из админки тест"
+    },
+    "type": "other",
+    "department": "mayor",
+    "fileUrl": "",
+    "viewUrl": "",
+    "id": "1759018835996"
+  }
+]

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="contacts.pageTitle">Контакты | Мэрия города Бишкек</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="lang-switcher">
+                    <a href="#" data-lang="ru" class="active">РУС</a>
+                    <a href="#" data-lang="ky">КЫР</a>
+                </div>
+                <div class="header-contacts">
+                    <a href="tel:+996312616161">+996 (312) 61-61-61</a>
+                    <a href="mailto:meria@bishkek.kg">meria@bishkek.kg</a>
+                </div>
+            </div>
+                <div class="header-main">
+                <a href="/" class="logo">
+                    <img src="/images/gerb.png" alt="Герб города Бишкек" class="logo-img">
+                    <div class="logo-text">
+                        <span data-i18n="header.title">МЭРИЯ ГОРОДА БИШКЕК</span>
+                        <small data-i18n="header.subtitle">Официальный сайт</small>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="/" data-i18n="nav.home">Главная</a>
+                          <a href="/news.html" data-i18n="nav.news">Новости</a>
+                          <a href="/structure.html" data-i18n="nav.structure">Структура</a>
+                          <a href="/documents.html" data-i18n="nav.documents">Документы</a>
+                       <a href="/contacts.html" class="active" data-i18n="nav.contacts">Контакты</a>
+                    <a href="https://e-meria.kg" class="em-link" target="_blank" rel="noopener">Электронная мэрия</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 data-i18n="contacts.pageTitle">Контакты и приемная</h1>
+            </div>
+        </section>
+
+        <section class="contacts-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-block">
+                            <h3 data-i18n="contacts.mainOffice">Центральный офис</h3>
+                            <p>
+                                <strong data-i18n="contacts.address">Адрес</strong>:<br>
+                                <span data-i18n="footer.address">г. Бишкек, пр. Чуй 166</span>
+                            </p>
+                            <p>
+                                <strong data-i18n="contacts.phone">Телефон</strong>:<br>
+                                <a href="tel:+996312616161">+996 (312) 61-61-61</a>
+                            </p>
+                            <p>
+                                <strong data-i18n="contacts.email">Электронная почта</strong>:<br>
+                                <a href="mailto:meria@bishkek.kg">meria@bishkek.kg</a>
+                            </p>
+                            <p>
+                                <strong data-i18n="contacts.workHours">Часы работы</strong>:<br>
+                                <span data-i18n="footer.schedule">
+                                    Пн-Пт: 9:00 - 18:00<br>
+                                    Обед: 12:00 - 13:00<br>
+                                    Сб-Вс: Выходной
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="departments-block">
+                            <h3 data-i18n="contacts.departments.title">Отделы</h3>
+                            <div class="department">
+                                <h4 data-i18n="contacts.departments.reception">Приемная мэра</h4>
+                                <p>+996 (312) 61-61-62</p>
+                            </div>
+                            <div class="department">
+                                <h4 data-i18n="contacts.departments.press">Пресс-служба</h4>
+                                <p>+996 (312) 61-61-63</p>
+                            </div>
+                            <div class="department">
+                                <h4 data-i18n="contacts.departments.emergency">Аварийная служба</h4>
+                                <p>+996 (312) 61-61-64</p>
+                            </div>
+                            <div class="department">
+                                <h4 data-i18n="contacts.departments.hotline">Горячая линия</h4>
+                                <p>+996 (312) 61-61-65</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3 data-i18n="contacts.feedback.title">Обратная связь</h3>
+                        <form id="feedback-form">
+                            <div class="form-group">
+                                <label for="name" data-i18n="contacts.feedback.name">Ваше имя</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" data-i18n="contacts.feedback.email">Ваш email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" data-i18n="contacts.feedback.subject">Тема обращения</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" data-i18n="contacts.feedback.message">Ваше сообщение</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" data-i18n="contacts.feedback.submit">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div class="container">
+                <h3 data-i18n="contacts.map.title">Мы на карте</h3>
+                <div id="map" class="contact-map">
+                    <!-- Карта будет добавлена через JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contacts">Контакты</h4>
+                    <p data-i18n="footer.address">Адрес: пр. Чуй, 166</p>
+                    <p>
+                        <a href="tel:+996312616161">+996 (312) 61-61-61</a><br>
+                        <a href="mailto:meria@bishkek.kg">meria@bishkek.kg</a>
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.workHours">Часы работы</h4>
+                    <p data-i18n="footer.schedule">
+                        Пн-Пт: 9:00 - 18:00<br>
+                        Обед: 12:00 - 13:00<br>
+                        Сб-Вс: Выходной
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.social">Мы в соцсетях</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">© 2025 Мэрия города Бишкек. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="/js/i18n.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=your-api-key&lang=ru_RU"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Инициализация карты
+            ymaps.ready(() => {
+                try {
+                    const map = new ymaps.Map('map', {
+                        center: [42.876976, 74.603556], // Координаты мэрии
+                        zoom: 16
+                    });
+
+                    const placemark = new ymaps.Placemark([42.876976, 74.603556], {
+                        balloonContent: getTranslation('footer.address')
+                    });
+
+                    map.geoObjects.add(placemark);
+                    map.controls.remove('searchControl');
+                    map.controls.remove('trafficControl');
+                    map.controls.remove('typeSelector');
+                    map.controls.remove('fullscreenControl');
+                    map.controls.remove('rulerControl');
+                } catch (error) {
+                    console.error('Ошибка при загрузке карты:', error);
+                    document.getElementById('map').innerHTML = `
+                        <div class="error-message">
+                            ${getTranslation('contacts.map.loadError')}
+                        </div>`;
+                }
+            });
+
+            // Обработчик формы обратной связи
+            document.getElementById('feedback-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Здесь должна быть отправка формы на сервер
+                // Для демонстрации просто показываем уведомление
+                alert(getTranslation('contacts.feedback.success'));
+                e.target.reset();
+            });
+        });
+    </script>
+</body>
+</html>

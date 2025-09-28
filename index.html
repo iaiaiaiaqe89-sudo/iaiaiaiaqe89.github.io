@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мэрия города Бишкек</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/info-section.css">
+    <link rel="stylesheet" href="/css/quick-links.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="lang-switcher">
+                    <a href="#" data-lang="ru">РУС</a>
+                    <a href="#" data-lang="ky">КЫР</a>
+                </div>
+                <div class="header-contacts">
+                    <a href="tel:+996312616161">+996 (312) 61-61-61</a>
+                    <a href="mailto:meria@bishkek.kg">meria@bishkek.kg</a>
+                </div>
+            </div>
+            <div class="header-main">
+                <a href="/" class="logo">
+                    <img src="/images/gerb.png" alt="Герб города Бишкек" class="logo-img">
+                    <div class="logo-text">
+                        <span data-i18n="header.title">МЭРИЯ ГОРОДА БИШКЕК</span>
+                        <small data-i18n="header.subtitle">Официальный сайт</small>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="/" class="active" data-i18n="nav.home">Главная</a>
+                    <a href="/news.html" data-i18n="nav.news">Новости</a>
+                    <a href="/structure.html" data-i18n="nav.structure">Структура</a>
+                    <a href="/documents.html" data-i18n="nav.documents">Документы</a>
+                    <a href="/contacts.html" data-i18n="nav.contacts">Контакты</a>
+                    <a href="https://e-meria.kg" class="em-link" target="_blank" rel="noopener">Электронная мэрия</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="date" id="current-date">28 сентября 2025 г.</div>
+                        <h1>Мэрия Бишкека — услуги и помощь горожанам</h1>
+                        <p class="lead">Быстрый доступ к электронным услугам, новостям и обращениям. Всё для удобства жителей города.</p>
+                        
+                        <div class="hero-actions">
+                            <div class="action-group">
+                                <a href="/services" class="btn btn-primary">Электронные услуги</a>
+                                <a href="/appeal" class="btn btn-primary-outline">Подать обращение</a>
+                                <a href="/schedule" class="btn btn-secondary">График приема</a>
+                            </div>
+                            <p class="action-hint">Доступно более 150 онлайн-услуг</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-widgets">
+                        <div class="stats-card">
+                            <div class="stats-title">Показатели сегодня</div>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-value">127</div>
+                                    <div class="stat-label">Обращений</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">94%</div>
+                                    <div class="stat-label">Решено</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">15</div>
+                                    <div class="stat-label">Проектов</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="weather-card">
+                            <div class="weather-main">
+                                <div class="weather-temp">23°</div>
+                                <div class="weather-info">
+                                    <div class="weather-desc">Солнечно</div>
+                                    <div class="weather-details">
+                                        <span>Ветер: 3 м/с</span>
+                                        <span>Влажность: 45%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="air-quality">
+                                <div class="air-quality-title">Качество воздуха</div>
+                                <div class="air-quality-value">
+                                    <span class="air-quality-number">47</span>
+                                    <span class="air-quality-label">Хорошее</span>
+                                </div>
+                            </div>
+                            <div class="weather-forecast">
+                                <div class="forecast-item">
+                                    <div>Пт</div>
+                                    <div class="weather-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <div>21°</div>
+                                </div>
+                                <div class="forecast-item">
+                                    <div>Сб</div>
+                                    <div class="weather-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <div>22°</div>
+                                </div>
+                                <div class="forecast-item">
+                                    <div>Вс</div>
+                                    <div class="weather-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2M19 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <div>24°</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News section -->
+        <section class="section news">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Актуальные новости</h2>
+                    <a href="/news.html" class="view-all">Все новости →</a>
+                </div>
+                <div class="news-grid" id="newsGrid">
+                    <!-- News items will be added by js/script.js -->
+                </div>
+            </div>
+        </section>
+
+        <div class="main-container">
+            <div class="main-content">
+                <!-- Resources section -->
+                <section class="section resources">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2>Полезные ресурсы</h2>
+                            <a href="/resources" class="view-all">Все ресурсы →</a>
+                        </div>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M3 6l9-3 9 3M3 12l9-3 9 3M3 18l9-3 9 3" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Карта ремонта дорог</h3>
+                        <p>Актуальная информация о ремонтных работах и перекрытиях в городе</p>
+                        <a href="/road-repairs" class="card-link">Открыть карту →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Открытый бюджет</h3>
+                        <p>Прозрачная информация о расходах и доходах городского бюджета</p>
+                        <a href="/budget" class="card-link">Изучить данные →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🗺️</div>
+                        <h3>Карта города</h3>
+                        <p>Интерактивная карта с объектами инфраструктуры, парковками и маршрутами транспорта</p>
+                        <a href="/maps" class="card-link">Открыть карту →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1v12zM4 22v-7" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Проект электробусов</h3>
+                        <p>Информация о программе обновления общественного транспорта</p>
+                        <a href="/electrobuses" class="card-link">Подробнее →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">📊</div>
+                        <h3>Открытые данные</h3>
+                        <p>Статистика, бюджет, закупки и другие данные в машиночитаемом формате</p>
+                        <a href="/data" class="card-link">Изучить данные →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">📅</div>
+                        <h3>События города</h3>
+                        <p>Календарь мероприятий, праздников и важных событий</p>
+                        <a href="/events" class="card-link">Календарь →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects section -->
+        <section class="section projects">
+            <div class="container">
+                <h2>Городские проекты</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-status">В процессе</div>
+                        <h3>Реконструкция дорог</h3>
+                        <p>План ремонта городских дорог на 2025 год</p>
+                        <div class="project-progress">
+                            <div class="progress-bar" style="width: 65%"></div>
+                            <span>65% выполнено</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-status">В процессе</div>
+                        <h3>Новый городской парк</h3>
+                        <p>Строительство парка отдыха в южном районе</p>
+                        <div class="project-progress">
+                            <div class="progress-bar" style="width: 40%"></div>
+                            <span>40% выполнено</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-status">Скоро</div>
+                        <h3>Умный город</h3>
+                        <p>Внедрение цифровых технологий</p>
+                        <div class="project-progress">
+                            <div class="progress-bar" style="width: 25%"></div>
+                            <span>25% выполнено</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links and Contacts Section -->
+        <section class="section quick-links-section">
+            <div class="container">
+                <div class="info-grid">
+                    <!-- Useful Links Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9-9-1.8-9-9 1.8-9 9-9" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M12 8v8M8 12h8" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Полезные ссылки</h3>
+                        </div>
+                        <div class="quick-links">
+                            <a href="http://www.president.kg" class="quick-link">
+                                <span>Президент Кыргызской Республики</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            <a href="http://www.kenesh.kg" class="quick-link">
+                                <span>Жогорку Кенеш</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            <a href="http://www.gov.kg" class="quick-link">
+                                <span>Правительство Кыргызстана</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                            <a href="http://zakupki.gov.kg" class="quick-link">
+                                <span>Портал государственных закупок</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0122 16.92z" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <h3 class="card-title">Контактная информация</h3>
+                        </div>
+                        <div class="contact-list">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke-width="2"/>
+                                        <circle cx="12" cy="10" r="3" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-content">
+                                    <div class="contact-label">Адрес</div>
+                                    <div class="contact-value">Чуй просп., 166</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0122 16.92z" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-content">
+                                    <div class="contact-label">Телефон</div>
+                                    <div class="contact-value">
+                                        <a href="tel:+996312611177">0(312) 61-11-77</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                        <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-content">
+                                    <div class="contact-label">Режим работы</div>
+                                    <div class="contact-value">Пн-Пт 9:00–18:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <img src="/images/gerb.png" alt="Герб города Бишкек" width="48" height="48">
+                        <span>Мэрия города Бишкек</span>
+                    </a>
+                    <div class="footer-contacts">
+                        <p>Чуй просп., 166<br>Бишкек, Кыргызстан</p>
+                        <p><a href="tel:+996312616161">+996 (312) 61-61-61</a><br>
+                           <a href="mailto:meria@bishkek.kg">meria@bishkek.kg</a></p>
+                    </div>
+                    <div class="footer-schedule">
+                        Режим работы:<br>
+                        Пн-Пт с 9:00 до 18:00
+                    </div>
+                </div>
+
+                <nav class="footer-nav">
+                    <div class="footer-nav-section">
+                        <h3>Услуги</h3>
+                        <ul>
+                            <li><a href="/services">Каталог услуг</a></li>
+                            <li><a href="/how-to">Как получить услугу</a></li>
+                            <li><a href="https://e-meria.kg">Электронные услуги</a></li>
+                            <li><a href="/schedule">График приема</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-nav-section">
+                        <h3>О нас</h3>
+                        <ul>
+                            <li><a href="/about">О портале</a></li>
+                            <li><a href="/news">Новости</a></li>
+                            <li><a href="/contacts">Контакты</a></li>
+                            <li><a href="/faq">Частые вопросы</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-nav-section">
+                        <h3>Дополнительно</h3>
+                        <ul>
+                            <li><a href="/site-map">Карта сайта</a></li>
+                            <li><a href="/privacy">Конфиденциальность</a></li>
+                            <li><a href="/terms">Условия использования</a></li>
+                            <li><a href="/accessibility">Доступность</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Footer Bottom -->
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">© 2025 Мэрия города Бишкек. Все права защищены.</div>
+                <div class="footer-links">
+                    <a href="/feedback">Обратная связь</a>
+                    <a href="/support">Техподдержка</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="/js/i18n.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Current date
+        const currentDate = new Date();
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById('current-date').textContent = currentDate.toLocaleDateString('ru-RU', options);
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+            menuBtn.textContent = isExpanded ? '☰' : '✕';
+        });
+
+        // Weather data (demo)
+        function updateWeather() {
+            const weatherUpdate = document.getElementById('weather-update');
+            const now = new Date();
+            weatherUpdate.textContent = `Обновлено ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+        }
+        updateWeather();
+        setInterval(updateWeather, 30 * 60 * 1000);
+    </script>
+</body>
+</html>

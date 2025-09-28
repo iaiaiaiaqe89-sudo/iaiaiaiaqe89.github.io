@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документы | Мэрия города Бишкек</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="lang-switcher">
+                    <a href="#" data-lang="ru">РУС</a>
+                    <a href="#" data-lang="ky">КЫР</a>
+                </div>
+                <div class="header-contacts">
+                    <a href="tel:+996312616161">+996 (312) 61-61-61</a>
+                    <a href="mailto:meria@bishkek.kg">meria@bishkek.kg</a>
+                </div>
+            </div>
+            <div class="header-main">
+                <a href="/" class="logo">
+                    <img src="/images/gerb.png" alt="Герб города Бишкек" class="logo-img">
+                    <div class="logo-text">
+                        <span data-i18n="header.title">МЭРИЯ ГОРОДА БИШКЕК</span>
+                        <small data-i18n="header.subtitle">Официальный сайт</small>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="/" data-i18n="nav.home">Главная</a>
+                    <a href="/news.html" data-i18n="nav.news">Новости</a>
+                    <!-- swapped: структура перед документами -->
+                    <a href="/structure.html" data-i18n="nav.structure">Структура</a>
+                    <a href="/documents.html" class="active" data-i18n="nav.documents">Документы</a>
+                    <a href="/contacts.html" data-i18n="nav.contacts">Контакты</a>
+                    <a href="https://e-meria.kg" class="em-link" target="_blank" rel="noopener">Электронная мэрия</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1 data-i18n="documents.pageTitle">Документы и постановления</h1>
+                <div class="page-filters">
+                    <div class="search-box">
+                        <input type="search" id="doc-search" data-i18n-placeholder="documents.searchPlaceholder" placeholder="Поиск по документам...">
+                        <button type="button" id="search-btn">🔍</button>
+                    </div>
+                    <div class="filter-group">
+                        <select id="doc-type">
+                            <option value="" data-i18n="documents.filters.allTypes">Все типы</option>
+                            <option value="resolution" data-i18n="documents.types.resolution">Постановление</option>
+                            <option value="order" data-i18n="documents.types.order">Распоряжение</option>
+                            <option value="regulation" data-i18n="documents.types.regulation">Положение</option>
+                            <option value="law" data-i18n="documents.types.law">Закон</option>
+                            <option value="other" data-i18n="documents.types.other">Другое</option>
+                        </select>
+                        <select id="doc-year">
+                            <option value="" data-i18n="documents.filters.allYears">Все годы</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                        <select id="doc-department">
+                            <option value="" data-i18n="documents.filters.allDepartments">Все отделы</option>
+                            <option value="mayor" data-i18n="documents.departments.mayor">Мэр города</option>
+                            <option value="cityCouncil" data-i18n="documents.departments.cityCouncil">Городской кенеш</option>
+                            <option value="finance" data-i18n="documents.departments.finance">Финансовый отдел</option>
+                            <option value="construction" data-i18n="documents.departments.construction">Отдел строительства</option>
+                            <option value="other" data-i18n="documents.departments.other">Другие отделы</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="documents-section">
+            <div class="container">
+                <div class="table-responsive">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:12px;flex-wrap:wrap">
+                        <div id="doc-status" class="doc-status" aria-live="polite" role="status" style="color:var(--muted)"></div>
+                        <div id="doc-count" class="doc-count" style="color:var(--muted);font-weight:600"></div>
+                    </div>
+                    <div id="doc-spinner" style="display:none;margin-bottom:12px">
+                        <div class="spinner" aria-hidden="true"></div>
+                    </div>
+
+                    <!-- Card-based documents list for better readability -->
+                    <div class="documents-cards" id="documents-list">
+                        <div class="doc-loading" style="padding:18px;text-align:center;color:var(--muted)">Загрузка...</div>
+                    </div>
+                </div>
+                <div class="pagination" id="documents-pagination">
+                    <!-- Пагинация будет добавлена динамически -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contacts">Контакты</h4>
+                    <p data-i18n="footer.address">Адрес: пр. Чуй, 166</p>
+                    <p>
+                        <a href="tel:+996312616161">+996 (312) 61-61-61</a><br>
+                        <a href="mailto:meria@bishkek.kg">Связаться по e-mail</a>
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.workHours">Часы работы</h4>
+                    <p data-i18n="footer.schedule">
+                        Пн-Пт: 9:00 - 18:00<br>
+                        Обед: 12:00 - 13:00<br>
+                        Сб-Вс: Выходной
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer.social">Мы в соцсетях</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">© 2025 Мэрия города Бишкек. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="/js/i18n.js"></script>
+    <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            // Static fallback dataset for 2024-2025 in case /api/documents is unavailable
+            const FALLBACK_DOCUMENTS = [
+                { number: 'D-2025-001', date: '2025-09-10', title: { ru: 'Постановление: О разработке ремонтных работ в центральном районе' }, type: 'resolution', department: 'construction', fileUrl: 'https://bishkek.gov.kg/ru/post/32204', viewUrl: 'https://bishkek.gov.kg/ru/post/32204' },
+                { number: 'D-2025-002', date: '2025-09-05', title: { ru: 'Распоряжение: О выделении средств для социальных программ' }, type: 'order', department: 'social', fileUrl: 'https://bishkek.gov.kg/ru/post/32202', viewUrl: 'https://bishkek.gov.kg/ru/post/32202' },
+                { number: 'D-2025-003', date: '2025-08-21', title: { ru: 'Отчёт: Мероприятие IMPULSE — итоги' }, type: 'report', department: 'culture', fileUrl: 'https://bishkek.gov.kg/ru/post/32199', viewUrl: 'https://bishkek.gov.kg/ru/post/32199' },
+                { number: 'D-2025-004', date: '2025-07-30', title: { ru: 'Постановление: Меры по обеспечению безопасности дорожного движения' }, type: 'resolution', department: 'transport', fileUrl: 'https://bishkek.gov.kg/ru/post/32197', viewUrl: 'https://bishkek.gov.kg/ru/post/32197' },
+                { number: 'D-2025-005', date: '2025-06-14', title: { ru: 'Распоряжение: Электрификация городского транспорта — проект' }, type: 'order', department: 'transport', fileUrl: 'https://bishkek.gov.kg/ru/post/31520', viewUrl: 'https://bishkek.gov.kg/ru/post/31520' },
+                { number: 'D-2024-001', date: '2024-12-15', title: { ru: 'Реестр подрядчиков и требования к участникам' }, type: 'order', department: 'legal', fileUrl: 'https://bishkek.gov.kg/ru/post/31477', viewUrl: 'https://bishkek.gov.kg/ru/post/31477' },
+                { number: 'D-2024-002', date: '2024-09-10', title: { ru: 'Отчёт по мониторингу городской среды' }, type: 'report', department: 'city', fileUrl: 'https://bishkek.gov.kg/ru/post/30882', viewUrl: 'https://bishkek.gov.kg/ru/post/30882' },
+                { number: 'D-2024-003', date: '2024-05-20', title: { ru: 'Информация: Земельная реформа — материалы' }, type: 'info', department: 'legal', fileUrl: 'http://www.meria.kg/ru/post/19483', viewUrl: 'http://www.meria.kg/ru/post/19483' },
+                { number: 'D-2023-001', date: '2023-11-05', title: { ru: 'Реестр мобильных групп по выдаче техпаспортов' }, type: 'order', department: 'transport', fileUrl: 'https://bishkek.gov.kg/ru/post/23317', viewUrl: 'https://bishkek.gov.kg/ru/post/23317' },
+                { number: 'D-2023-002', date: '2023-08-18', title: { ru: 'Информация: Ход работ по ремонту' }, type: 'info', department: 'construction', fileUrl: 'https://bishkek.gov.kg/ru/post/17923', viewUrl: 'https://bishkek.gov.kg/ru/post/17923' }
+            ];
+
+            // Small helper used by the template to avoid XSS when inserting plain text
+            function escapeHtml(s) {
+                if (!s && s !== 0) return '';
+                return String(s)
+                    .replaceAll('&', '&amp;')
+                    .replaceAll('<', '&lt;')
+                    .replaceAll('>', '&gt;')
+                    .replaceAll('"', '&quot;')
+                    .replaceAll("'", '&#039;');
+            }
+
+            // Элемент статуса загрузки (сообщает, используется ли API или локальные данные)
+            const statusEl = document.getElementById('doc-status');
+
+            // Инициализируем пагинацию на странице
+            const docsPerPage = 20;
+            let currentPage = 1;
+            let filteredDocs = [];
+
+            // Функция для форматирования даты
+            function formatDate(dateString) {
+                return new Date(dateString).toLocaleDateString(
+                    currentLang === 'ru' ? 'ru-RU' : 'ky-KG',
+                    { year: 'numeric', month: '2-digit', day: '2-digit' }
+                );
+            }
+
+            // Функция для обновления списка документов с учетом фильтров
+            function updateDocumentsList() {
+                const typeFilter = document.getElementById('doc-type').value;
+                const yearFilter = document.getElementById('doc-year').value;
+                const departmentFilter = document.getElementById('doc-department').value;
+                const searchQuery = document.getElementById('doc-search').value.toLowerCase();
+
+                // Показываем прогресс
+                const spinner = document.getElementById('doc-spinner');
+                if (spinner) spinner.style.display = 'block';
+                if (statusEl) statusEl.textContent = 'Загружаем документы...';
+
+                fetch('/api/documents')
+                    .then(response => {
+                        if (!response.ok) throw new Error('api-unavailable');
+                        return response.json();
+                    })
+                    .then(documents => {
+                        if (statusEl) statusEl.textContent = `Загружено ${documents.length} документов (сервер)`;
+                        // Применяем фильтры
+                        filteredDocs = documents.filter(doc => {
+                            const title = getLocalizedContent(doc.title, '').toLowerCase();
+                            const type = doc.type;
+                            const year = new Date(doc.date).getFullYear().toString();
+                            const department = doc.department;
+
+                            return (!typeFilter || type === typeFilter) &&
+                                   (!yearFilter || year === yearFilter) &&
+                                   (!departmentFilter || department === departmentFilter) &&
+                                   (!searchQuery || title.includes(searchQuery));
+                        });
+
+                        // Сортируем по дате (новые сверху)
+                        filteredDocs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                        // Отображаем текущую страницу
+                        displayDocsPage(currentPage);
+
+                        // Обновляем пагинацию
+                        updatePagination();
+                        if (spinner) spinner.style.display = 'none';
+                    })
+                    .catch(error => {
+                        // If API is down, use fallback dataset for last two years
+                        console.warn('API documents unavailable, using fallback dataset:', error);
+                        if (statusEl) statusEl.textContent = 'Сервер недоступен — показываются локальные данные за последние 2 года.';
+                        const nowYear = new Date().getFullYear();
+                        const lastTwoYears = [nowYear, nowYear - 1].map(String);
+                        const fallback = FALLBACK_DOCUMENTS.filter(d => lastTwoYears.includes(new Date(d.date).getFullYear().toString()));
+                        filteredDocs = fallback.sort((a,b) => new Date(b.date) - new Date(a.date));
+                        displayDocsPage(currentPage);
+                        updatePagination();
+                        if (spinner) spinner.style.display = 'none';
+                    });
+            }
+
+            // Функция отображения страницы документов (карточки)
+            function displayDocsPage(page) {
+                const startIndex = (page - 1) * docsPerPage;
+                const endIndex = startIndex + docsPerPage;
+                const pageDocs = filteredDocs.slice(startIndex, endIndex);
+
+                const container = document.getElementById('documents-list');
+                if (!pageDocs.length) {
+                    container.innerHTML = `<div class="doc-empty" style="padding:18px;text-align:center;color:var(--muted)">Нет документов, соответствующих фильтру.</div>`;
+                } else {
+                    container.innerHTML = pageDocs.map(doc => `
+                        <article class="doc-card" data-id="${escapeHtml(doc.id || doc.number || '')}">
+                            <div class="doc-card-header">
+                                <div class="doc-number">${escapeHtml(doc.number || '')}</div>
+                                <div class="doc-date">${formatDate(doc.date)}</div>
+                            </div>
+                            <h3 class="doc-title"><a href="${doc.viewUrl || doc.fileUrl || '#'}" target="_blank" rel="noopener">${escapeHtml(getLocalizedContent(doc.title))}</a></h3>
+                            <div class="doc-meta">
+                                <span class="badge">${getTranslation(`documents.types.${doc.type}`) || escapeHtml(doc.type || '')}</span>
+                                <span class="badge muted">${getTranslation(`documents.departments.${doc.department}`) || escapeHtml(doc.department || '')}</span>
+                            </div>
+                            <div class="doc-actions">
+                                <a href="${doc.fileUrl || doc.viewUrl || '#'}" class="action-btn">${getTranslation('documents.download') || 'Скачать'}</a>
+                                <a href="${doc.viewUrl || doc.fileUrl || '#'}" class="action-btn">${getTranslation('documents.view') || 'Просмотр'}</a>
+                            </div>
+                        </article>
+                    `).join('');
+                }
+
+                // Update count display
+                const countEl = document.getElementById('doc-count');
+                if (countEl) countEl.textContent = `${filteredDocs.length} документов`;
+            }
+
+            // Функция обновления пагинации
+            function updatePagination() {
+                const totalPages = Math.ceil(filteredDocs.length / docsPerPage);
+                const pagination = document.getElementById('documents-pagination');
+
+                if (totalPages <= 1) {
+                    pagination.innerHTML = '';
+                    return;
+                }
+
+                let html = '';
+                // Кнопка "Назад"
+                html += `<button class="page-btn prev" ${currentPage === 1 ? 'disabled' : ''}>
+                    ${getTranslation('news.pagination.prev')}
+                </button>`;
+
+                // Номера страниц
+                for (let i = 1; i <= totalPages; i++) {
+                    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}">${i}</button>`;
+                }
+
+                // Кнопка "Вперед"
+                html += `<button class="page-btn next" ${currentPage === totalPages ? 'disabled' : ''}>
+                    ${getTranslation('news.pagination.next')}
+                </button>`;
+
+                pagination.innerHTML = html;
+
+                // Добавляем обработчики для кнопок пагинации
+                pagination.querySelectorAll('.page-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (btn.classList.contains('prev') && currentPage > 1) {
+                            currentPage--;
+                        } else if (btn.classList.contains('next') && currentPage < totalPages) {
+                            currentPage++;
+                        } else if (!isNaN(btn.textContent)) {
+                            currentPage = parseInt(btn.textContent);
+                        }
+                        displayDocsPage(currentPage);
+                        updatePagination();
+                    });
+                });
+            }
+
+            // Обработчики событий для фильтров
+            ['doc-type', 'doc-year', 'doc-department'].forEach(id => {
+                document.getElementById(id).addEventListener('change', () => {
+                    currentPage = 1;
+                    updateDocumentsList();
+                });
+            });
+
+            // Обработчик поиска
+            let searchTimeout;
+            document.getElementById('doc-search').addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    currentPage = 1;
+                    updateDocumentsList();
+                }, 300);
+            });
+
+            // Начальная загрузка документов
+            updateDocumentsList();
+        });
+    </script>
+</body>
+</html>

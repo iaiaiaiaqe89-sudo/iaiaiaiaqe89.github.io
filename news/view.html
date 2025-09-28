@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="news.viewPage.title">Просмотр новости | Мэрия города Бишкек</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Мэрия города Бишкек">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="lang-switcher">
+                    <a href="#" data-lang="ru" class="active">РУС</a>
+                    <a href="#" data-lang="ky">КЫР</a>
+                </div>
+                <div class="header-contacts">
+                    <a href="tel:+996312616161">+996 (312) 61-61-61</a>
+                    <a href="mailto:meria@bishkek.kg">meria@bishkek.kg</a>
+                </div>
+            </div>
+            <div class="header-main">
+                <a href="/" class="logo">
+                    <img src="/images/gerb.png" alt="Герб города Бишкек" class="logo-img">
+                    <div class="logo-text">
+                        <span data-i18n="header.title">МЭРИЯ ГОРОДА БИШКЕК</span>
+                        <small data-i18n="header.subtitle">Официальный сайт</small>
+                    </div>
+                </a>
+                <nav class="main-nav">
+                    <a href="/">Главная</a>
+                    <a href="/news.html" class="active">Новости</a>
+                    <a href="/documents.html">Документы</a>
+                    <a href="/contacts.html">Контакты</a>
+                    <a href="https://e-meria.kg" class="em-link" target="_blank" rel="noopener">Электронная мэрия</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="news-navigation">
+                <a href="/news.html" class="back-to-news">← К списку новостей</a>
+            </div>
+            <article id="news-content" class="news-full"></article>
+        </div>
+    </main>
+
+    <script>
+    async function loadAndDisplayNews() {
+        try {
+            // Получаем ID новости из URL
+            const newsId = window.location.pathname.split('/').pop();
+            
+            // Загружаем данные новости
+            const response = await fetch(`/api/news/${newsId}`);
+            if (!response.ok) {
+                throw new Error('Новость не найдена');
+            }
+            
+            const news = await response.json();
+            
+            // Определяем язык пользователя
+            const userLang = navigator.language.startsWith('ky') ? 'ky' : 'ru';
+            
+            // Получаем контейнер для новости
+            const container = document.getElementById('news-content');
+            
+            // Обновляем заголовок страницы
+            const title = news.title[userLang] || news.title.ru || news.title.ky;
+            document.title = `${title} | Мэрия города Бишкек`;
+            
+            // Формируем HTML новости
+            container.innerHTML = `
+                ${news.image ? `
+                    <div class="news-image-full">
+                        <img src="${news.image}" alt="${title}">
+                    </div>
+                ` : ''}
+                
+                <div class="news-meta">
+                    <time datetime="${(news.date || '') + 'T' + (news.time || '00:00')}">${formatDate((news.date || '') + 'T' + (news.time || '00:00'))}</time>
+                </div>
+                
+                <h1>${title}</h1>
+                
+                <div class="news-content">
+                    ${news.content[userLang] || news.content.ru || news.content.ky}
+                </div>
+                
+                ${news.title.ru && news.title.ky ? `
+                    <div class="news-language-switch">
+                        <button onclick="switchLanguage('ru')" class="${userLang === 'ru' ? 'active' : ''}">Русский</button>
+                        <button onclick="switchLanguage('ky')" class="${userLang === 'ky' ? 'active' : ''}">Кыргызча</button>
+                    </div>
+                ` : ''}
+            `;
+        } catch (error) {
+            console.error('Ошибка при загрузке новости:', error);
+            document.getElementById('news-content').innerHTML = `
+                <div class="error-message">
+                    <h2>Ошибка</h2>
+                    <p>${error.message || 'Произошла ошибка при загрузке новости'}</p>
+                    <a href="/news.html" class="button">Вернуться к списку новостей</a>
+                </div>
+            `;
+        }
+    }
+
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        const months = [
+            "января", "февраля", "марта", "апреля", "мая", "июня",
+            "июля", "августа", "сентября", "октября", "ноября", "декабря"
+        ];
+        const hh = String(date.getHours()).padStart(2, '0');
+        const mm = String(date.getMinutes()).padStart(2, '0');
+        return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()} ${hh}:${mm}`;
+    }
+
+    function switchLanguage(lang) {
+        const newsContent = document.getElementById('news-content');
+        const title = document.querySelector('h1');
+        const content = document.querySelector('.news-content');
+        
+        const newsId = window.location.pathname.split('/').pop();
+        
+        // Загружаем новость заново для получения контента на другом языке
+        fetch(`/api/news/${newsId}`)
+            .then(response => response.json())
+            .then(news => {
+                title.textContent = news.title[lang] || news.title.ru || news.title.ky;
+                content.innerHTML = news.content[lang] || news.content.ru || news.content.ky;
+                
+                // Обновляем активную кнопку
+                document.querySelectorAll('.news-language-switch button').forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('onclick').includes(lang));
+                });
+            });
+    }
+
+    // Загружаем новость при загрузке страницы
+    document.addEventListener('DOMContentLoaded', loadAndDisplayNews);
+    </script>
+</body>
+</html>

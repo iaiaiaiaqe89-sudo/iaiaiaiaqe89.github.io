@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Мэрия города Бишкек — Официальный портал</title>
+  <meta name="description" content="Официальный портал мэрии г. Бишкек — новости, электронные услуги, контакты, события и открытые данные." />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#0b74de; /* civic-blue */
+      --accent-2:#ff7a00; /* call-to-action */
+      --accent-3:#00a86b; /* success/green */
+      --bg:#f6f8fb;
+      --text:#162029;
+      --muted:#65788b;
+      --radius:14px;
+      --shadow:0 6px 18px rgba(16,40,64,0.04);
+      --transition: all 0.2s ease;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Onest", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text); 
+      background:var(--bg); 
+      -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 18px;
+      background:#fff;
+      border-bottom:1px solid #e6edf3; 
+      position:sticky; 
+      top:0; 
+      z-index:1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .branding{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:#fff; /* Белый фон вместо синего */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:700;
+      font-size:18px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      overflow: hidden;
+      border: 1px solid #e6edf3;
+    }
+    .logo svg {
+      width: 80%;
+      height: 80%;
+    }
+    .logo:hover {
+      transform: translateY(-2px);
+      box-shadow:0 8px 25px rgba(0,0,0,0.12);
+    }
+    .city-name{
+      font-size:16px;
+      font-weight:700;
+    }
+    .lang-switch{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang-switch button{
+      background:transparent;
+      border:0;
+      padding:6px 8px;
+      border-radius:8px;
+      color:var(--muted);
+      cursor:pointer;
+      transition: var(--transition);
+    }
+    .lang-switch button:hover {
+      background: rgba(11,116,222,0.05);
+    }
+    .lang-switch button[aria-pressed="true"]{
+      background:#eef6ff;
+      color:var(--accent);
+    }
+
+    /* Main Navigation */
+    .main-nav {
+      background: #fff;
+      border-bottom: 1px solid #e6edf3;
+      padding: 0 18px;
+      position: sticky;
+      top: 76px;
+      z-index: 999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 12px 0;
+    }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    /* Search & quick actions */
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .search{
+      display:flex;
+      align-items:center;
+      background:#f3f7fb;
+      padding:8px 12px;
+      border-radius:12px;
+      min-width:260px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .search:focus-within {
+      background: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(11,116,222,0.1);
+    }
+    .search input{
+      border:0;
+      background:transparent;
+      outline:0;
+      width:100%;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:0;
+      background:var(--accent);
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .cta:hover {
+      background: #0a68c7;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(11,116,222,0.3);
+    }
+
+    /* Layout */
+    .container{
+      max-width:1200px;
+      margin:22px auto;
+      padding:0 18px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:20px;
+      align-items:start;
+    }
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg,rgba(11,116,222,0.06),rgba(255,255,255,0.0));
+      padding:28px;
+      border-radius:18px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      box-shadow:0 6px 30px rgba(16,40,64,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(11,116,222,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.5;
+    }
+    .hero-left{
+      flex:1;
+      position: relative;
+      z-index: 1;
+    }
+    .kicker{
+      display:inline-block;
+      background:rgba(11,116,222,0.08);
+      color:var(--accent);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      margin-bottom:12px;
+      font-size: 14px;
+    }
+    .hero h1{
+      margin:0;
+      font-size:28px;
+      line-height:1.05;
+    }
+    .hero p{
+      margin:12px 0 0;
+      color:var(--muted);
+    }
+    .hero-cta{
+      margin-top:16px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .quick-grid{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .service-card{
+      background:#fff;
+      padding:12px;
+      border-radius:12px;
+      min-width:140px;
+      box-shadow: var(--shadow);
+      cursor:pointer;
+      border:1px solid #f0f4f8;
+      transition: var(--transition);
+      flex: 1;
+      min-width: 150px;
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(16,40,64,0.08);
+      border-color: rgba(11,116,222,0.2);
+    }
+    .service-card small{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(11,116,222,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    /* News section with images */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .news-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(16,40,64,0.1);
+    }
+    .news-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .news-content {
+      padding: 16px;
+    }
+    .news-date {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .news-title {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      line-height: 1.3;
+    }
+    .news-excerpt {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Right column widgets */
+    .widget{
+      background:#fff;
+      padding:18px;
+      border-radius:12px;
+      box-shadow: var(--shadow);
+      border:1px solid #f0f4f8;
+      transition: var(--transition;
+    }
+    .widget:hover {
+      box-shadow: 0 8px 25px rgba(16,40,64,0.06);
+    }
+    .alerts{
+      border-left:4px solid #ff7a00;
+      padding-left:16px;
+    }
+    
+    /* Weather widget */
+    .weather-widget {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .weather-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .weather-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .weather-temp {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .weather-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .weather-detail {
+      display: flex;
+      justify-content: space-between;
+    }
+    .air-quality {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 14px;
+    }
+    .air-quality.moderate {
+      background: #fff3e0;
+      color: #ef6c00;
+    }
+
+    /* Footer */
+    footer{
+      margin-top:28px;
+      padding:24px 18px;
+      background:#fff;
+      border-top:1px solid #e6edf3;
+      border-radius:12px;
+      max-width:1200px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* City stats section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .stat-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(16,40,64,0.08);
+    }
+    .stat-number {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Interactive cards: Maps, Open Data, Budget */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .feature-card {
+      background:#fff;
+      padding:18px;
+      border-radius:12px;
+      box-shadow: var(--shadow);
+      border:1px solid #f0f4f8;
+      transition: var(--transition);
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 25px rgba(16,40,64,0.06);
+    }
+
+    /* Report form */
+    .report-form {
+      margin-top: 18px;
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+      .topbar{
+        padding:10px;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero::before {
+        width: 100%;
+        height: 40%;
+      }
+      .hero h1{
+        font-size:22px;
+      }
+      .search{
+        min-width:140px;
+      }
+      .main-nav {
+        top: 0;
+        position: relative;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .footer-links {
+        justify-content: center;
+      }
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Accessibility helpers */
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      border:0;
+    }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .muted{
+      color:var(--muted);
+    }
+
+    /* Loading animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    /* Hero image styling */
+    .hero-image {
+      width: 340px;
+      flex-shrink: 0;
+    }
+    .hero-image img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      box-shadow: 0 12px 30px rgba(16,40,64,0.06);
+    }
+    .image-caption {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top navigation -->
+  <header class="topbar" role="banner" aria-label="Верхняя панель">
+    <div class="branding">
+      <div class="logo" aria-hidden="true">
+        <!-- Герб Бишкека в формате SVG -->
+        <svg viewBox="0 0 62.088889 84.666668" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd">
+          <rect width="46.207966" height="46.207966" x="8.0339975" y="26.984364" style="fill:#ffffff" />
+          <path d="m 54.242094,68.977886 0,4.214567 -46.2077054,0 0,-4.214567 46.2077054,0 z M 0.28221727,30.856022 8.0343886,23.103851 l 0,-19.2017606 5.1638234,0 0,4.578145 4.178807,0 0,-4.578145 5.00401,0 0,4.8551198 L 31.138241,-2.29528e-6 39.868667,8.7304229 l 0,-4.8283325 5.00401,0 0,4.578145 4.178937,0 0,-4.578145 5.19048,0 0,19.2018906 7.752042,7.752041 -7.752042,7.752041 0,21.432642 L 43.525773,49.324384 31.138241,61.712046 18.75058,49.324384 8.0343886,60.040705 l 0,-21.432512 -7.75217133,-7.752171 z m 7.75217133,30.481913 0,6.274193 46.2077054,0 0,-6.274193 L 43.525773,50.621614 31.138241,63.009276 18.75058,50.621614 8.0343886,61.337935 z" style="fill:#0068ac" />
+          <polygon points="104.992,161.623 127.242,139.373 104.992,117.123 82.7424,139.373" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#ffffff" />
+          <path d="m 34.524875,25.143061 c 0.990477,0 1.796825,0.460714 1.796825,1.036639 0,0.575926 -0.806348,1.03664 -1.796825,1.03664 -1.013623,0 -1.819841,-0.460714 -1.819841,-1.03664 0,-0.575925 0.806218,-1.036639 1.819841,-1.036639 z m -3.132805,1.474337 c 0.575795,0 1.059526,0.322487 1.059526,0.737169 0,0.391536 -0.483731,0.737039 -1.059526,0.737039 -0.575925,0 -1.03664,-0.345503 -1.03664,-0.737039 0,-0.414682 0.460715,-0.737169 1.03664,-0.737169 z m 3.616536,1.266932 c 0.529762,0 0.944444,0.299471 0.944444,0.66799 0,0.36865 -0.414682,0.668121 -0.944444,0.668121 -0.506747,0 -0.921429,-0.299471 -0.921429,-0.668121 0,-0.368519 0.414682,-0.66799 0.921429,-0.66799 z M 25.541011,11.690281 c -0.04616,0.09206 -0.06918,0.207276 -0.09219,0.276455 -1.243916,0.990477 -2.533994,1.911906 -3.547487,3.086773 -1.497354,1.681613 -2.487832,3.662568 -2.902513,5.874074 -0.230293,1.312965 -0.36852,2.649075 -0.875397,3.916007 -1.036509,2.510977 -3.225,3.754893 -6.772489,3.455422 1.013622,-7.947354 6.680421,-14.42037 14.190076,-16.608731 z m 5.597621,39.137569 c -11.011111,0 -19.971958,-8.960848 -19.971958,-19.971958 0,-0.276325 0.02302,-0.575796 0.02302,-0.85225 2.349734,1.451191 5.735977,1.888889 9.974471,0.66799 -1.727646,-3.132805 -0.760185,-6.196562 2.073279,-7.141006 2.142198,-0.737169 4.422753,-0.483731 5.712831,1.727646 0.714023,1.220899 0.299471,3.363227 -1.566532,3.823941 1.174866,-2.580026 -1.082673,-3.547487 -2.718124,-2.833464 -1.681613,0.737169 -1.70463,3.363227 -0.345503,4.630159 0.714023,0.691136 1.543386,1.105818 2.418653,1.244046 1.382142,0.230292 2.67222,-0.391666 4.238623,-0.760185 1.796695,-0.437699 4.422883,-0.299471 6.012302,0.783201 3.777779,2.55688 1.981084,6.795503 0.806217,8.039419 0.06918,-0.737169 -0.02302,-1.612565 -0.276454,-2.464815 -0.322487,-1.151851 -1.059656,-2.188361 -2.027117,-2.718254 -1.819841,-0.967461 -4.146429,0.0922 -4.284656,2.211507 -0.115081,1.52037 0.691137,3.086773 1.566403,4.26151 0.575925,0.806347 1.33611,1.589548 2.165474,2.326587 -0.990607,-0.02302 -2.303572,-0.09206 -3.363227,-0.115081 -2.07328,0.04603 -2.418783,0.967461 -2.418783,1.865874 l 9.00701,0 c -1.03664,1.312964 -3.823942,2.764285 -6.841666,2.487831 -1.266932,-0.115211 -3.616535,-0.829234 -5.643782,-2.027117 -3.363098,-1.981085 -5.666669,-5.183068 -3.846958,-8.454101 2.18849,-2.695237 5.851058,0.115211 3.155951,2.971562 4.4459,-1.658598 3.40926,-7.762964 -1.589419,-7.809127 -3.985185,0.18439 -6.680422,4.998809 -4.422883,10.020633 1.197883,2.718124 3.478309,4.44577 6.035318,5.851059 2.649075,1.451191 5.436377,2.18836 8.131612,2.119182 -0.644976,0.06918 -1.313096,0.115211 -2.004102,0.115211 z m 0,-39.943786 c 11.034126,0 19.971957,8.937831 19.971957,19.971828 0,8.131613 -4.860581,15.111376 -11.840344,18.244312 2.119182,-1.151851 4.054234,-2.902513 5.666669,-5.321296 1.013623,-1.497224 2.165474,-3.317065 2.902513,-5.321165 0.276455,-0.783202 1.267062,-3.800926 0.161243,-4.330689 -1.704629,-0.829363 -3.731746,3.225 -4.169444,3.892991 0.276454,-2.280556 0.276454,-4.584127 -0.276325,-6.979763 -0.575925,-1.727777 -1.612565,-3.040741 -2.925529,-4.07738 -1.52037,-1.197884 -3.294179,-1.958069 -5.137036,-2.55701 -1.33611,-0.414552 -2.810318,-0.829234 -4.054234,-1.197753 -1.912036,-0.575926 -4.008201,-1.405159 -4.883597,-3.386244 -0.230292,-0.575925 -0.345503,-1.220899 -0.161244,-1.958068 0.115211,-0.575925 0.575926,-1.289948 1.243916,-1.313094 0.299471,-0.02302 0.691136,-0.02302 1.243915,0.460714 0.276455,0.253438 0.460715,0.414682 0.806218,0.230422 0.368649,-0.18426 0.714153,-0.691136 0.18439,-0.921428 -0.36865,-0.138228 -0.875396,-0.253439 -1.128835,-0.575926 -0.207276,-0.230292 -0.138227,-0.552779 0.0922,-0.783201 0.276455,-0.276455 0.829234,-0.322487 1.151721,0.06918 0.460714,0.460714 0.921428,0.852249 1.589549,0.276324 0.276454,-0.253308 0.575795,-0.48373 0.598941,-0.737039 0.04603,-0.506876 -0.575925,-0.944575 -0.875396,-1.244045 -0.345503,-0.345504 -0.691136,-0.737039 -0.990607,-0.944445 -0.85225,-0.598942 -1.88889,-1.013494 -2.672091,-0.898282 -0.02302,-0.0922 -0.04603,-0.18439 -0.09207,-0.276455 1.174737,-0.207406 2.37262,-0.322487 3.59352,-0.322488 z" style="fill:#0068ac" />
+          <path d="m 103.287,179.437 2.049,0 0,-6.238 1.1,0 0,7.338 -0.241,0 0,0 -7.1577,0 0,-7.338 1.0997,0 0,6.238 2.05,0 0,-6.238 1.1,0 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+          <path d="m 112.338,173.199 -2.533,3.362 2.585,3.976 -1.312,0 -2.204,-3.391 -0.103,0 0,3.391 -1.1,0 0,-7.338 1.1,0 0,2.847 0.045,0 2.145,-2.847 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+          <path d="m 116.24,177.146 -2.039,0 0,2.291 2.413,0 0,1.1 -3.513,0 0,-7.338 3.513,0 0,1.1 -2.413,0 0,1.747 2.039,0 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+          <path d="m 93.947,180.537 -1.1,0 0,-7.338 1.1,0 0,5.062 2.7553,-5.062 1.1,0 0,7.338 -1.1,0 0,-5.062 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+          <path d="m 13.416931,74.842468 0,1.430386 -3.420313,0 0,2.273013 0.995809,0 c 1.612044,0 2.919287,1.307243 2.919287,2.919288 0,1.612045 -1.307243,2.919287 -2.919287,2.919287 l -2.4261949,0 0,-9.541974 4.8506989,0 z m -3.420313,5.133785 0,2.977803 0.995809,0 c 0.822211,0 1.488901,-0.666689 1.488901,-1.488901 0,-0.822212 -0.66669,-1.488902 -1.488901,-1.488902 l -0.995809,0 z" style="fill:#0068ac" />
+          <path d="m 122.711,173.199 -2.533,3.362 2.585,3.976 -1.312,0 -2.204,-3.391 -0.103,0 0,3.391 -1.1,0 0,-7.338 1.1,0 0,2.847 0.045,0 2.145,-2.847 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+        </svg>
+      </div>
+      <div>
+        <div class="city-name">Мэрия города Бишкек</div>
+        <div class="muted" style="font-size:13px">Официальный портал</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="search" role="search" aria-label="Поиск по порталу">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35" stroke="#8aa4b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <input placeholder="Поиск услуг, документов, новостей..." aria-label="Поиск" />
+      </div>
+
+      <div class="lang-switch" role="navigation" aria-label="Выбор языка">
+        <button aria-pressed="false" title="Кыргызча">KY</button>
+        <button aria-pressed="true" title="Русский">RU</button>
+        <button aria-pressed="false" title="English">EN</button>
+      </div>
+
+      <a href="https://e-meria.gov.kg" class="cta" target="_blank">Электронные услуги</a>
+    </div>
+  </header>
+
+  <!-- Main Navigation -->
+  <nav class="main-nav" role="navigation" aria-label="Основное меню">
+    <div class="nav-container">
+      <button class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-menu">☰</button>
+      <ul class="nav-links" id="nav-menu">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/about">О мэрии</a></li>
+        <li><a href="/news">Новости</a></li>
+        <li><a href="/services">Услуги</a></li>
+        <li><a href="/documents">Документы</a></li>
+        <li><a href="/contacts">Контакты</a></li>
+      </ul>
+      <div style="font-size:14px;color:var(--muted);">Сегодня: <span id="current-date"></span></div>
+    </div>
+  </nav>
+
+  <main class="container" role="main">
+    <div class="grid" aria-live="polite">
+      <!-- main column -->
+      <section>
+        <div class="hero" role="region" aria-label="Главный блок">
+          <div class="hero-left">
+            <div class="kicker">Новости & Сервисы</div>
+            <h1>Мэрия Бишкека — услуги, данные и помощь всем горожанам</h1>
+            <p>Быстрый доступ к электронным услугам, объявлениям, картам и обращениям жителей. Официальные новости, онлайн-приём и интерактивные карты города.</p>
+
+            <div class="hero-cta" style="display:flex;align-items:center">
+              <button class="cta" onclick="document.getElementById('report').scrollIntoView({behavior:'smooth'})">Подать обращение</button>
+              <a class="muted" href="#transparency" style="align-self:center;padding-left:6px">Бюджет и открытые данные →</a>
+            </div>
+
+            <!-- Quick services -->
+            <div style="margin-top:18px" id="eservices" aria-label="Быстрые услуги">
+              <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Популярные услуги</div>
+              <div class="quick-grid" role="list">
+                <div class="service-card" role="listitem" tabindex="0">
+                  <div class="service-icon">₸</div>
+                  <div style="font-weight:700">Оплата штрафов</div>
+                  <small class="muted">ГИБДД, ЖКХ</small>
+                </div>
+                <div class="service-card" role="listitem" tabindex="0">
+                  <div class="service-icon">👶</div>
+                  <div style="font-weight:700">Запись в детсад</div>
+                  <small class="muted">Электронная очередь</small>
+                </div>
+                <div class="service-card" role="listitem" tabindex="0">
+                  <div class="service-icon">📝</div>
+                  <div style="font-weight:700">Заявления и обращения</div>
+                  <small class="muted">Онлайн-приём</small>
+                </div>
+                <div class="service-card" role="listitem" tabindex="0">
+                  <div class="service-icon">💼</div>
+                  <div style="font-weight:700">Вакансии</div>
+                  <small class="muted">Работа в мэрии</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero image (Ala-Too) -->
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1587496679742-bad50295b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Здание мэрии Бишкека и площадь Ала-Тоо" />
+            <div class="image-caption">Площадь Ала-Тоо и здание мэрии</div>
+          </div>
+        </div>
+
+        <!-- City Stats Section -->
+        <div class="stats">
+          <div class="stat-card fade-in">
+            <div class="stat-number">1.1 млн</div>
+            <div class="stat-label">Население города</div>
+          </div>
+          <div class="stat-card fade-in">
+            <div class="stat-number">160 км²</div>
+            <div class="stat-label">Площадь города</div>
+          </div>
+          <div class="stat-card fade-in">
+            <div class="stat-number">+4.2%</div>
+            <div class="stat-label">Темп роста экономики</div>
+          </div>
+        </div>
+
+        <!-- News & Events -->
+        <section style="margin-top:18px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h2 style="margin:0;font-size:18px">Актуальные новости</h2>
+            <a class="muted" href="/news">Все новости →</a>
+          </div>
+          
+          <div class="news-grid">
+            <!-- News item 1 -->
+            <article class="news-card" aria-labelledby="n1" role="article">
+              <img src="https://images.unsplash.com/photo-1587496679742-bad50295b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Мэр проверяет коммунальные службы" class="news-image">
+              <div class="news-content">
+                <div class="news-date">21 мая 2025</div>
+                <h3 id="n1" class="news-title">Мэр проверил работу коммунальных служб</h3>
+                <p class="news-excerpt">Проверка готовности к летнему сезону и уборке улиц. Особое внимание уделено паркам и скверам.</p>
+              </div>
+            </article>
+
+            <!-- News item 2 -->
+            <article class="news-card" aria-labelledby="n2" role="article">
+              <img src="https://images.unsplash.com/photo-1593113630400-ea4288922497?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Детский сад" class="news-image">
+              <div class="news-content">
+                <div class="news-date">18 мая 2025</div>
+                <h3 id="n2" class="news-title">Открыт приём на новые места в детсады</h3>
+                <p class="news-excerpt">Онлайн-реестр и инструкции по записи. В этом году открыто 5 новых детских садов.</p>
+              </div>
+            </article>
+
+            <!-- News item 3 -->
+            <article class="news-card" aria-labelledby="n3" role="article">
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Дорожные работы" class="news-image">
+              <div class="news-content">
+                <div class="news-date">15 мая 2025</div>
+                <h3 id="n3" class="news-title">Начался ремонт дорог в центре города</h3>
+                <p class="news-excerpt">Запланирован ремонт 15 км дорожного полотна. Работы завершатся к концу лета.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Interactive cards: Maps, Open Data, Budget -->
+        <section style="margin-top:18px">
+          <h2 style="margin:0 0 12px 0;font-size:18px">Полезные ресурсы</h2>
+          <div class="features-grid">
+            <div class="feature-card" role="region" aria-label="Интерактивные карты">
+              <strong>Интерактивные карты</strong>
+              <p class="muted" style="margin:8px 0 0">Парковки, тротуары, приёмные пункты — слои, которые можно включать/выключать.</p>
+              <a href="/maps" style="display:inline-block;margin-top:10px">Открыть карты →</a>
+            </div>
+            <div class="feature-card" role="region" aria-label="Открытые данные">
+              <strong>Открытые данные</strong>
+              <p class="muted" style="margin:8px 0 0">Бюджет, закупки, списки подрядчиков — CSV, JSON и API для разработчиков.</p>
+              <a href="/opendata" style="display:inline-block;margin-top:10px">Изучить данные →</a>
+            </div>
+            <div class="feature-card" id="transparency" role="region" aria-label="Бюджет">
+              <strong>Прозрачный бюджет</strong>
+              <p class="muted" style="margin:8px 0 0">Данные по исполнению бюджета, интерактивные отчёты и визуализации.</p>
+              <a href="/budget" style="display:inline-block;margin-top:10px">Смотреть бюджет →</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Report form anchor -->
+        <section class="report-form" id="report" aria-label="Подать обращение">
+          <div class="widget">
+            <h3 style="margin:0 0 8px">Подать обращение или жалобу</h3>
+            <form onsubmit="event.preventDefault();submitForm()">
+              <label class="sr-only" for="issue">Текст обращения</label>
+              <textarea id="issue" required placeholder="Опишите проблему..." style="width:100%;min-height:90px;border-radius:10px;padding:10px;border:1px solid #e6eef6"></textarea>
+              <div style="display:flex;gap:10px;margin-top:10px;align-items:center">
+                <input type="text" placeholder="Контакт (телефон или почта)" style="flex:1;padding:10px;border-radius:10px;border:1px solid #e6eef6" required>
+                <button class="cta" type="submit">Отправить</button>
+              </div>
+              <div style="font-size:12px;color:var(--muted);margin-top:8px">Ты получишь номер обращения и смс/почту с ответом.</div>
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <!-- right column -->
+      <aside>
+        <!-- Weather widget -->
+        <div class="widget weather-widget" role="region" aria-label="Погода в Бишкеке">
+          <div class="weather-header">
+            <strong>Погода в Бишкеке</strong>
+            <span style="font-size:12px;color:var(--muted);" id="weather-update">Обновлено сейчас</span>
+          </div>
+          <div class="weather-main">
+            <div style="font-size:40px;">☀️</div>
+            <div>
+              <div class="weather-temp">+24°C</div>
+              <div style="font-size:14px;color:var(--muted);">Солнечно</div>
+            </div>
+          </div>
+          <div class="weather-details">
+            <div class="weather-detail">
+              <span>Влажность:</span>
+              <span>45%</span>
+            </div>
+            <div class="weather-detail">
+              <span>Ветер:</span>
+              <span>3 м/с</span>
+            </div>
+            <div class="weather-detail">
+              <span>Давление:</span>
+              <span>755 мм</span>
+            </div>
+            <div class="weather-detail">
+              <span>Ощущается:</span>
+              <span>+25°C</span>
+            </div>
+          </div>
+          <div class="air-quality">
+            <span>🌱</span>
+            <span>Качество воздуха: Хорошее (AQI 35)</span>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="widget alerts" role="region" aria-label="Аварийные оповещения">
+          <strong>Оповещения</strong>
+          <div style="margin-top:10px" class="muted">Нет экстренных уведомлений.</div>
+          <div style="margin-top:12px">
+            <a href="#" class="muted">Подписаться на SMS и Telegram</a>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="widget" role="region" aria-label="Контакты">
+          <strong>Контакты</strong>
+          <p class="muted" style="margin:8px 0 0">Чуй просп., 166 • Тел: 0(312) 61-11-77</p>
+          <p class="muted" style="margin:6px 0 0;font-size:13px">Рабочие часы: Пн-Пт 9:00–18:00</p>
+          <a href="/contacts" style="display:inline-block;margin-top:10px">Полные контакты →</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo" style="width:48px;height:48px;border-radius:10px">
+          <!-- Герб Бишкека в формате SVG для футера -->
+          <svg viewBox="0 0 62.088889 84.666668" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd">
+            <rect width="46.207966" height="46.207966" x="8.0339975" y="26.984364" style="fill:#ffffff" />
+            <path d="m 54.242094,68.977886 0,4.214567 -46.2077054,0 0,-4.214567 46.2077054,0 z M 0.28221727,30.856022 8.0343886,23.103851 l 0,-19.2017606 5.1638234,0 0,4.578145 4.178807,0 0,-4.578145 5.00401,0 0,4.8551198 L 31.138241,-2.29528e-6 39.868667,8.7304229 l 0,-4.8283325 5.00401,0 0,4.578145 4.178937,0 0,-4.578145 5.19048,0 0,19.2018906 7.752042,7.752041 -7.752042,7.752041 0,21.432642 L 43.525773,49.324384 31.138241,61.712046 18.75058,49.324384 8.0343886,60.040705 l 0,-21.432512 -7.75217133,-7.752171 z m 7.75217133,30.481913 0,6.274193 46.2077054,0 0,-6.274193 L 43.525773,50.621614 31.138241,63.009276 18.75058,50.621614 8.0343886,61.337935 z" style="fill:#0068ac" />
+            <polygon points="104.992,161.623 127.242,139.373 104.992,117.123 82.7424,139.373" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#ffffff" />
+            <path d="m 34.524875,25.143061 c 0.990477,0 1.796825,0.460714 1.796825,1.036639 0,0.575926 -0.806348,1.03664 -1.796825,1.03664 -1.013623,0 -1.819841,-0.460714 -1.819841,-1.03664 0,-0.575925 0.806218,-1.036639 1.819841,-1.036639 z m -3.132805,1.474337 c 0.575795,0 1.059526,0.322487 1.059526,0.737169 0,0.391536 -0.483731,0.737039 -1.059526,0.737039 -0.575925,0 -1.03664,-0.345503 -1.03664,-0.737039 0,-0.414682 0.460715,-0.737169 1.03664,-0.737169 z m 3.616536,1.266932 c 0.529762,0 0.944444,0.299471 0.944444,0.66799 0,0.36865 -0.414682,0.668121 -0.944444,0.668121 -0.506747,0 -0.921429,-0.299471 -0.921429,-0.668121 0,-0.368519 0.414682,-0.66799 0.921429,-0.66799 z M 25.541011,11.690281 c -0.04616,0.09206 -0.06918,0.207276 -0.09219,0.276455 -1.243916,0.990477 -2.533994,1.911906 -3.547487,3.086773 -1.497354,1.681613 -2.487832,3.662568 -2.902513,5.874074 -0.230293,1.312965 -0.36852,2.649075 -0.875397,3.916007 -1.036509,2.510977 -3.225,3.754893 -6.772489,3.455422 1.013622,-7.947354 6.680421,-14.42037 14.190076,-16.608731 z m 5.597621,39.137569 c -11.011111,0 -19.971958,-8.960848 -19.971958,-19.971958 0,-0.276325 0.02302,-0.575796 0.02302,-0.85225 2.349734,1.451191 5.735977,1.888889 9.974471,0.66799 -1.727646,-3.132805 -0.760185,-6.196562 2.073279,-7.141006 2.142198,-0.737169 4.422753,-0.483731 5.712831,1.727646 0.714023,1.220899 0.299471,3.363227 -1.566532,3.823941 1.174866,-2.580026 -1.082673,-3.547487 -2.718124,-2.833464 -1.681613,0.737169 -1.70463,3.363227 -0.345503,4.630159 0.714023,0.691136 1.543386,1.105818 2.418653,1.244046 1.382142,0.230292 2.67222,-0.391666 4.238623,-0.760185 1.796695,-0.437699 4.422883,-0.299471 6.012302,0.783201 3.777779,2.55688 1.981084,6.795503 0.806217,8.039419 0.06918,-0.737169 -0.02302,-1.612565 -0.276454,-2.464815 -0.322487,-1.151851 -1.059656,-2.188361 -2.027117,-2.718254 -1.819841,-0.967461 -4.146429,0.0922 -4.284656,2.211507 -0.115081,1.52037 0.691137,3.086773 1.566403,4.26151 0.575925,0.806347 1.33611,1.589548 2.165474,2.326587 -0.990607,-0.02302 -2.303572,-0.09206 -3.363227,-0.115081 -2.07328,0.04603 -2.418783,0.967461 -2.418783,1.865874 l 9.00701,0 c -1.03664,1.312964 -3.823942,2.764285 -6.841666,2.487831 -1.266932,-0.115211 -3.616535,-0.829234 -5.643782,-2.027117 -3.363098,-1.981085 -5.666669,-5.183068 -3.846958,-8.454101 2.18849,-2.695237 5.851058,0.115211 3.155951,2.971562 4.4459,-1.658598 3.40926,-7.762964 -1.589419,-7.809127 -3.985185,0.18439 -6.680422,4.998809 -4.422883,10.020633 1.197883,2.718124 3.478309,4.44577 6.035318,5.851059 2.649075,1.451191 5.436377,2.18836 8.131612,2.119182 -0.644976,0.06918 -1.313096,0.115211 -2.004102,0.115211 z m 0,-39.943786 c 11.034126,0 19.971957,8.937831 19.971957,19.971828 0,8.131613 -4.860581,15.111376 -11.840344,18.244312 2.119182,-1.151851 4.054234,-2.902513 5.666669,-5.321296 1.013623,-1.497224 2.165474,-3.317065 2.902513,-5.321165 0.276455,-0.783202 1.267062,-3.800926 0.161243,-4.330689 -1.704629,-0.829363 -3.731746,3.225 -4.169444,3.892991 0.276454,-2.280556 0.276454,-4.584127 -0.276325,-6.979763 -0.575925,-1.727777 -1.612565,-3.040741 -2.925529,-4.07738 -1.52037,-1.197884 -3.294179,-1.958069 -5.137036,-2.55701 -1.33611,-0.414552 -2.810318,-0.829234 -4.054234,-1.197753 -1.912036,-0.575926 -4.008201,-1.405159 -4.883597,-3.386244 -0.230292,-0.575925 -0.345503,-1.220899 -0.161244,-1.958068 0.115211,-0.575925 0.575926,-1.289948 1.243916,-1.313094 0.299471,-0.02302 0.691136,-0.02302 1.243915,0.460714 0.276455,0.253438 0.460715,0.414682 0.806218,0.230422 0.368649,-0.18426 0.714153,-0.691136 0.18439,-0.921428 -0.36865,-0.138228 -0.875396,-0.253439 -1.128835,-0.575926 -0.207276,-0.230292 -0.138227,-0.552779 0.0922,-0.783201 0.276455,-0.276455 0.829234,-0.322487 1.151721,0.06918 0.460714,0.460714 0.921428,0.852249 1.589549,0.276324 0.276454,-0.253308 0.575795,-0.48373 0.598941,-0.737039 0.04603,-0.506876 -0.575925,-0.944575 -0.875396,-1.244045 -0.345503,-0.345504 -0.691136,-0.737039 -0.990607,-0.944445 -0.85225,-0.598942 -1.88889,-1.013494 -2.672091,-0.898282 -0.02302,-0.0922 -0.04603,-0.18439 -0.09207,-0.276455 1.174737,-0.207406 2.37262,-0.322487 3.59352,-0.322488 z" style="fill:#0068ac" />
+            <path d="m 103.287,179.437 2.049,0 0,-6.238 1.1,0 0,7.338 -0.241,0 0,0 -7.1577,0 0,-7.338 1.0997,0 0,6.238 2.05,0 0,-6.238 1.1,0 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+            <path d="m 112.338,173.199 -2.533,3.362 2.585,3.976 -1.312,0 -2.204,-3.391 -0.103,0 0,3.391 -1.1,0 0,-7.338 1.1,0 0,2.847 0.045,0 2.145,-2.847 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+            <path d="m 116.24,177.146 -2.039,0 0,2.291 2.413,0 0,1.1 -3.513,0 0,-7.338 3.513,0 0,1.1 -2.413,0 0,1.747 2.039,0 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+            <path d="m 93.947,180.537 -1.1,0 0,-7.338 1.1,0 0,5.062 2.7553,-5.062 1.1,0 0,7.338 -1.1,0 0,-5.062 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+            <path d="m 13.416931,74.842468 0,1.430386 -3.420313,0 0,2.273013 0.995809,0 c 1.612044,0 2.919287,1.307243 2.919287,2.919288 0,1.612045 -1.307243,2.919287 -2.919287,2.919287 l -2.4261949,0 0,-9.541974 4.8506989,0 z m -3.420313,5.133785 0,2.977803 0.995809,0 c 0.822211,0 1.488901,-0.666689 1.488901,-1.488901 0,-0.822212 -0.66669,-1.488902 -1.488901,-1.488902 l -0.995809,0 z" style="fill:#0068ac" />
+            <path d="m 122.711,173.199 -2.533,3.362 2.585,3.976 -1.312,0 -2.204,-3.391 -0.103,0 0,3.391 -1.1,0 0,-7.338 1.1,0 0,2.847 0.045,0 2.145,-2.847 z" transform="matrix(1.3003508,0,0,1.3003508,-105.38897,-150.37699)" style="fill:#0068ac" />
+          </svg>
+        </div>
+        <div>
+          <div style="font-weight:700">Мэрия города Бишкек</div>
+          <div class="muted" style="font-size:13px">© Мэрия города Бишкек, 2025</div>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a class="muted" href="/privacy">Политика конфиденциальности</a>
+        <a class="muted" href="/sitemap">Карта сайта</a>
+        <a class="muted" href="/accessibility">Доступность</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Минимальный JS: переключение языков (демо) и доступности
+    document.querySelectorAll('.lang-switch button').forEach(btn=>{
+      btn.addEventListener('click',()=> {
+        document.querySelectorAll('.lang-switch button').forEach(b=>b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        // Здесь можно реализовать загрузку языковых фраз/контента через API
+        alert('Вы выбрали язык: ' + btn.title + ' (демо)');
+      })
+    })
+
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-links');
+    
+    menuBtn.addEventListener('click', () => {
+      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', !isExpanded);
+      navMenu.classList.toggle('active');
+      menuBtn.textContent = isExpanded ? '☰' : '✕';
+    });
+
+    // Current date display
+    const currentDate = new Date();
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    document.getElementById('current-date').textContent = currentDate.toLocaleDateString('ru-RU', options);
+
+    // Form submission
+    function submitForm() {
+      const issue = document.getElementById('issue').value;
+      if (issue.trim() === '') {
+        alert('Пожалуйста, опишите проблему');
+        return;
+      }
+      
+      // Show loading state
+      const submitBtn = document.querySelector('#report button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Отправка...';
+      submitBtn.disabled = true;
+      
+      // Simulate API call
+      setTimeout(() => {
+        alert('Ваше обращение успешно отправлено! Номер обращения: #' + Math.floor(Math.random() * 10000));
+        document.querySelector('#report form').reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }, 1500);
+    }
+
+    // Add fade-in animation to elements as they come into view
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements that should fade in
+    document.querySelectorAll('.stat-card, .widget, .service-card, .news-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Simple weather data (in a real implementation, this would come from an API)
+    function updateWeather() {
+      const weatherUpdate = document.getElementById('weather-update');
+      const now = new Date();
+      weatherUpdate.textContent = `Обновлено ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+    }
+
+    // Update weather on load and then every 30 minutes
+    updateWeather();
+    setInterval(updateWeather, 30 * 60 * 1000);
+  </script>
+</body>
+</html>
